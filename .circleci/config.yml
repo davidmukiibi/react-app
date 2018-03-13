@@ -54,6 +54,10 @@ jobs:
               sudo groupadd docker
               sudo usermod -aG docker root
        - run:
+          name: echo pwd
+          command: |
+            pwd
+       - run:
            name: install docker
            command: |
               apt-get update
