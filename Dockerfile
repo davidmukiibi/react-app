@@ -8,7 +8,7 @@ COPY . /
 
 RUN npm install
 
-RUN  gulp sass
+RUN gulp sass
 
 ENTRYPOINT [ "npm" ]
 
