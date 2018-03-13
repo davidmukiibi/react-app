@@ -46,6 +46,8 @@ jobs:
       - image: ubuntu:16.04
 
     steps:
+       - checkout
+
        - run:
             name: add root user to docker group
             command: |
@@ -56,6 +58,7 @@ jobs:
        - run:
           name: echo pwd
           command: |
+            pwd
             ls
        - run:
            name: install docker
