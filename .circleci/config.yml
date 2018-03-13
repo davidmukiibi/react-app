@@ -51,6 +51,7 @@ jobs:
             command: |
               apt-get update
               apt-get install -y sudo curl
+              sudo groupadd docker
               sudo usermod -aG docker root
        - run:
            name: install docker
