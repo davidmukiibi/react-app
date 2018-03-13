@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:7.10
 
-    working_directory: ~/bucketlist-react
+    working_directory: ~/repo/bucketlist-react
 
     steps:
       - checkout
