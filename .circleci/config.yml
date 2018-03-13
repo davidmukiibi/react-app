@@ -18,11 +18,8 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            npm install
-      - run:
-          name: install gulp cli
-          command: |
-            npm install --global gulp-cli
+            npm install && npm install --global gulp-cli
+            
 
       - run:
           name: compile sass
