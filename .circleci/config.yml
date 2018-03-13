@@ -19,7 +19,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
           
-      working_directory: ~/react-app/bucketlist-react
+    working_directory: ~/react-app/bucketlist-react
       - run:
           name: install dependencies
           command: |
