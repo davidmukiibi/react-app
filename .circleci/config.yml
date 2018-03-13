@@ -16,12 +16,14 @@ jobs:
           - v1-dependencies-
           
       - run:
-          name: install dependencies
+          name: install gulp cli
           command: |
             npm install --global gulp-cli
-            npm install 
+      - run:
+          name: install dependencies
+          command: |
+            npm install
             
-
       - run:
           name: compile sass
           command: |
