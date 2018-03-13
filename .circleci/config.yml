@@ -47,9 +47,9 @@ jobs:
 
     steps:
        - run:
-            name: print circleci user
+            name: add root user to docker group
             command: |
-              whoami
+              sudo usermod -aG docker root
        - run:
            name: install docker
            command: |
