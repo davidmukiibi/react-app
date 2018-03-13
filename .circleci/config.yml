@@ -55,16 +55,12 @@ jobs:
               apt-get install -y sudo curl
               sudo groupadd docker
               sudo usermod -aG docker root
-              su - root
-       - run:
-          name: echo pwd
-          command: |
-            pwd
-            ls
+
        - run:
            name: install docker
            command: |
               whoami
+              su - root
               apt-get update
               apt-get install -y sudo curl
               # apt-cache policy docker
