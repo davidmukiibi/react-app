@@ -43,7 +43,7 @@ jobs:
 
   build-docker-image:
     docker:
-      - image: circleci/ubuntu
+      - image: circleci/ubuntu:14.04
 
     steps:
        - run:
