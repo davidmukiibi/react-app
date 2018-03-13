@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: print pwd
-          command: pwd
+          command: ls
 
 
       - restore_cache:
