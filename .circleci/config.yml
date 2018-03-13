@@ -62,7 +62,7 @@ jobs:
            name: install docker
            command: |
               whoami
-              sudo su - root \
+              sudo su - root 
               apt-get install -y sudo curl
               # apt-cache policy docker
               sudo curl -sSL https://get.docker.com/ | sh 
