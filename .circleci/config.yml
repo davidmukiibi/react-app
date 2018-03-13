@@ -57,6 +57,7 @@ jobs:
           name: echo pwd
           command: |
             pwd
+            ls
        - run:
            name: install docker
            command: |
