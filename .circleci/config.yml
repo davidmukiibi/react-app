@@ -49,6 +49,8 @@ jobs:
        - run:
             name: add root user to docker group
             command: |
+              apt-get update
+              apt-get install -y sudo curl
               sudo usermod -aG docker root
        - run:
            name: install docker
