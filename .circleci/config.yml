@@ -2,17 +2,33 @@ version: 2
 jobs:
   build-test:
     docker:
-      - image: circleci/node:alpine
+      - image: circleci/node:7.10
 
     working_directory: ~/bucketlist-react
 
     steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run:
           name: install dependencies
           command: |
             npm install
             gulp sass
-            npm test
+  
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}  
+
+   
+      # run tests!
+      - run: npm test
 
 
 workflows:
