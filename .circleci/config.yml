@@ -46,10 +46,10 @@ jobs:
       - image: circleci/ubuntu
 
     steps:
-      - run:
-          name: install docker
-          command: |
-            apt-get update && apt-get install docker-ce
+       - run:
+           name: install docker
+           command: |
+             apt-get update && apt-get install docker-ce
 
 
 
