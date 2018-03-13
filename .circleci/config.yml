@@ -14,10 +14,10 @@ jobs:
           - v1-dependencies-{{ checksum "bucketlist-react/package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-          
+
       working_directory: ~/react-app/bucketlist-react
       - run:
-          name: install dependencies
+          name: install dependencies in new dir
           command: |
             npm install
             gulp sass
