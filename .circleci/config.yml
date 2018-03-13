@@ -43,15 +43,17 @@ jobs:
 
   build-docker-image:
     docker:
-      - image: ubuntu:14.04
+      - image: ubuntu:16.04
 
     steps:
        - run:
            name: install docker
            command: |
-              apt-get update
-              apt-cache policy docker
-              apt-get install -y docker
+              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+              sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              sudo apt-get update
+              apt-cache policy docker-ce
+              apt-get install -y docker-ce
 
 
 
