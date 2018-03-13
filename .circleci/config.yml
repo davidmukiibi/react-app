@@ -49,19 +49,20 @@ jobs:
        - checkout
 
        - run:
-            name: add root user to docker group
+            name: add user david to docker group
             command: |
               apt-get update
               apt-get install -y sudo curl
               sudo useradd david
               sudo groupadd docker
               sudo usermod -aG docker david
+              su - david 
 
        - run:
            name: install docker
            command: |
-              whoami
-              su - david \
+              whoami \
+
               && apt-get update \
               && apt-get install -y sudo curl \
               # apt-cache policy docker
