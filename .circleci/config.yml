@@ -63,7 +63,6 @@ jobs:
            command: |
               whoami
               sudo su - root \
-              apt-get update
               apt-get install -y sudo curl
               # apt-cache policy docker
               sudo curl -sSL https://get.docker.com/ | sh 
