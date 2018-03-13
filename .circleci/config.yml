@@ -18,7 +18,7 @@ jobs:
       - run:
           name: install gulp cli
           command: |
-            npm install --global gulp-cli
+            sudo npm install --global gulp-cli
       - run:
           name: install dependencies
           command: |
