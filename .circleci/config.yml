@@ -62,7 +62,7 @@ jobs:
            name: install docker
            command: |
               whoami
-              sudo -u david bash
+              sudo -u david
               apt-get update \
               && apt-get install -y sudo curl \
               # apt-cache policy docker
