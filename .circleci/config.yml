@@ -49,7 +49,9 @@ jobs:
        - run:
            name: install docker
            command: |
-             apt-get update && apt-get install docker-ce
+              apt-get update
+              apt-cache policy docker-ce
+              apt-get install -y docker-ce
 
 
 
