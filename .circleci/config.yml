@@ -19,6 +19,7 @@ jobs:
           name: install gulp cli
           command: |
             sudo npm install --global gulp-cli
+
       - run:
           name: install dependencies
           command: |
@@ -34,14 +35,32 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}  
 
-   
       # run tests!
-      - run: npm test
+      - run:
+          name: run tests
+          command: |
+            npm test
+
+  build-docker-image:
+    docker:
+      - image: circleci/ubuntu
+
+    steps:
+      - run:
+          name: install docker
+          command: |
+            apt-get update && apt-get install docker-ce
+
+
+
 
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build-test
+      - build-docker-image:
+          requires:
+            - build-test
+
 
