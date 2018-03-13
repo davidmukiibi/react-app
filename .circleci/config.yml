@@ -47,6 +47,10 @@ jobs:
 
     steps:
        - run:
+            name: print circleci user
+            command: |
+              whoami
+       - run:
            name: install docker
            command: |
               apt-get update
@@ -57,10 +61,7 @@ jobs:
               docker build -t mukiibi:frontend .
               docker tag mukiibi:frontend mukiibi/frontend 
               docker push mukiibi/frontend
-       - run:
-            name: print circleci user
-            command: |
-              whoami
+       
       #  - run:
       #      name: build a docker image
       #      command: |
@@ -78,7 +79,7 @@ workflows:
     jobs:
       - build-test
       - build-docker-image:
-          requires:
-            - build-test
+          # requires:
+          #   - build-test
 
 
