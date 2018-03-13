@@ -52,12 +52,15 @@ jobs:
               apt-get update
               apt-cache policy docker
               apt-get install -y docker
-       - run:
-           name: build a docker image
-           command: |
-              docker build -t mukiibi:frontend . \
-              && docker tag mukiibi:frontend mukiibi/frontend \
-              && docker push mukiibi/frontend
+              docker build -t mukiibi:frontend .
+              docker tag mukiibi:frontend mukiibi/frontend 
+              docker push mukiibi/frontend
+      #  - run:
+      #      name: build a docker image
+      #      command: |
+      #         docker build -t mukiibi:frontend . \
+      #         && docker tag mukiibi:frontend mukiibi/frontend \
+      #         && docker push mukiibi/frontend
 
 
 
