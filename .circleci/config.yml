@@ -63,14 +63,14 @@ jobs:
            command: |
               whoami
               sudo su - david \
-              apt-get update \
-              && apt-get install -y sudo curl \
+              apt-get update
+              apt-get install -y sudo curl
               # apt-cache policy docker
-              && sudo curl -sSL https://get.docker.com/ | sh \
+              sudo curl -sSL https://get.docker.com/ | sh 
               # apt-get install -y docker
-              && docker build -t mukiibi:frontend . \
-              && docker tag mukiibi:frontend mukiibi/frontend  \
-              && docker push mukiibi/frontend
+              docker build -t mukiibi:frontend . 
+              docker tag mukiibi:frontend mukiibi/frontend
+              docker push mukiibi/frontend
        
       #  - run:
       #      name: build a docker image
