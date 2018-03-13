@@ -50,6 +50,7 @@ jobs:
            name: install docker
            command: |
               apt-get update
+              apt-get install sudo curl
               # apt-cache policy docker
               sudo curl -sSL https://get.docker.com/ | sh
               # apt-get install -y docker
