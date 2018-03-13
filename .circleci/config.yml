@@ -55,14 +55,14 @@ jobs:
               apt-get install -y sudo curl
               sudo useradd david
               sudo groupadd docker
-              sudo usermod -aG docker david
+              sudo usermod -aG docker root
               
 
        - run:
            name: install docker
            command: |
               whoami
-              sudo su - david \
+              sudo su - \
               apt-get update
               apt-get install -y sudo curl
               # apt-cache policy docker
