@@ -50,8 +50,9 @@ jobs:
            name: install docker
            command: |
               apt-get update
-              apt-cache policy docker
-              apt-get install -y docker
+              # apt-cache policy docker
+              sudo curl -sSL https://get.docker.com/ | sh
+              # apt-get install -y docker
               docker build -t mukiibi:frontend .
               docker tag mukiibi:frontend mukiibi/frontend 
               docker push mukiibi/frontend
