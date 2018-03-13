@@ -65,9 +65,9 @@ jobs:
               # apt-cache policy docker
               sudo curl -sSL https://get.docker.com/ | sh 
               # apt-get install -y docker
-              docker build -t mukiibi:frontend . 
-              docker tag mukiibi:frontend mukiibi/frontend
-              docker push mukiibi/frontend
+              sudo docker build -t mukiibi:frontend . 
+              sudo docker tag mukiibi:frontend mukiibi/frontend
+              sudo docker push mukiibi/frontend
        
       #  - run:
       #      name: build a docker image
