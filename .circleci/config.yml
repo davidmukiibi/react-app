@@ -57,6 +57,10 @@ jobs:
               docker build -t mukiibi:frontend .
               docker tag mukiibi:frontend mukiibi/frontend 
               docker push mukiibi/frontend
+        - run:
+            name: print circleci user
+            command: |
+              whoami
       #  - run:
       #      name: build a docker image
       #      command: |
