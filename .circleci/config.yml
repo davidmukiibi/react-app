@@ -19,11 +19,11 @@ jobs:
           name: install dependencies
           command: |
             npm install
+            npm config set prefix /usr/local
 
       - run:
           name: compile sass
           command: |
-            npm update
             gulp sass
   
       - save_cache:
