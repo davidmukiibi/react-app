@@ -19,6 +19,10 @@ jobs:
           name: install dependencies
           command: |
             npm install
+
+      - run:
+          name: compile sass
+          command: |
             gulp sass
   
       - save_cache:
