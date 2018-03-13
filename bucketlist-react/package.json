@@ -1,0 +1,50 @@
+{
+  "name": "bucketlist",
+  "version": "0.1.0",
+  "private": true,
+  "jest": {
+    "collectCoverageFrom": [
+      "!**/index.js",
+      "**/src/**/*.{js,jsx}"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "history": "^1.17.0",
+    "jquery": "^3.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.10"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --coverage --env=jsdom",
+    "sass": "gulp sass",
+    "test-help": "react-scripts test --help"
+  },
+  "devDependencies": {
+    "navalia": "^1.2.0",
+    "axios-mock-adapter": "^1.9.0",
+    "expect": "^21.2.1",
+    "browser-sync": "^2.18.13",
+    "chai": "^4.1.1",
+    "coveralls": "^2.13.1",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.4.1",
+    "eslint-plugin-react": "^7.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-minify": "0.0.15",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "jest": "^20.0.4",
+    "mocha": "^3.5.0",
+    "mock-browser": "^0.92.14",
+    "protractor": "^5.1.2",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1"
+  }
+}

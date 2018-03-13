@@ -1,0 +1,60 @@
+.bucket-container{
+    padding-bottom: 80px;
+}
+
+.bucket{
+    display: block;
+    position: relative;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover, &.active{
+        background: #f6f5f7;
+
+        img{ 
+            opacity: 1;
+        }
+
+        a{
+            color: inherit;
+        }
+    }
+}
+
+.bucket + .bucket{
+    margin-top: 0px;
+}
+
+.no-buckets{
+    padding: 20px;
+    color: #a5a6a4;
+} 
+
+.icon-wrapper{
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+
+    img{
+        opacity: .3;
+    }
+}
+
+.bucket-content{
+    float: left;
+    width: calc(100% - 34px)
+}
+
+.bucket-title{
+    font-size: 16px
+}
+
+.bucket-description{
+    width: 90%;
+    font-size: 12px;
+}

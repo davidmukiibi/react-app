@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build-test:
+    docker:
+      - image: circleci/node:alpine
+
+    working_directory: ~/bucketlist-react
+
+    steps:
+      - run:
+          name: install dependencies
+          command: |
+            npm install
+            gulp sass
+            npm test
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build-test
+
