@@ -50,8 +50,8 @@ jobs:
            name: install docker
            command: |
               apt-get update
-              apt-cache policy docker-ce
-              apt-get install -y docker-ce
+              apt-cache policy docker
+              apt-get install -y docker
 
 
 
