@@ -18,7 +18,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            npm install && npm install --global gulp-cli
+            npm install
             
 
       - run:
