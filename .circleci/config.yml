@@ -63,6 +63,7 @@ jobs:
            command: |
               curl -fsSL get.docker.com -o get-docker.sh
               sudo sh get-docker.sh
+              sudo service docker start
               sudo docker build -t mukiibi:frontend . 
               sudo docker tag mukiibi:frontend mukiibi/frontend
               sudo docker push mukiibi/frontend
