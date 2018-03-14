@@ -53,7 +53,7 @@ jobs:
             command: |
               apt-get update
               apt-get install -y sudo curl
-              sudo useradd david
+              # sudo useradd david
               sudo groupadd docker
               sudo usermod -aG docker root
               
@@ -61,20 +61,12 @@ jobs:
        - run:
            name: install docker
            command: |
-              apt-get install -y sudo curl
-              # apt-cache policy docker
-              sudo curl -sSL https://get.docker.com/ | sh 
-              # apt-get install -y docker
+              curl -fsSL get.docker.com -o get-docker.sh
+              sudo sh get-docker.sh
               sudo docker build -t mukiibi:frontend . 
               sudo docker tag mukiibi:frontend mukiibi/frontend
               sudo docker push mukiibi/frontend
-       
-      #  - run:
-      #      name: build a docker image
-      #      command: |
-      #         docker build -t mukiibi:frontend . \
-      #         && docker tag mukiibi:frontend mukiibi/frontend \
-      #         && docker push mukiibi/frontend
+
 
 
 
