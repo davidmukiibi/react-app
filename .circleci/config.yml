@@ -66,9 +66,9 @@ jobs:
               sudo usermod -aG docker root
               sg docker -c \
               # sudo service docker restart
-              docker build -t mukiibi:frontend . 
-              && docker tag mukiibi:frontend mukiibi/frontend
-              && docker push mukiibi/frontend
+              "docker build -t mukiibi:frontend . \
+              && docker tag mukiibi:frontend mukiibi/frontend \
+              && docker push mukiibi/frontend"
 
 
 
