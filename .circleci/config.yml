@@ -64,11 +64,11 @@ jobs:
               sudo sh get-docker.sh
               # sudo groupadd docker
               sudo usermod -aG docker root
-              sg docker -c \
+              sg docker -c "docker build -t mukiibi:frontend ."
               # sudo service docker restart
-              "docker build -t mukiibi:frontend . \
-              && docker tag mukiibi:frontend mukiibi/frontend \
-              && docker push mukiibi/frontend"
+              # "docker build -t mukiibi:frontend . \
+              # && docker tag mukiibi:frontend mukiibi/frontend \
+              # && docker push mukiibi/frontend"
 
 
 
