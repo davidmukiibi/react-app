@@ -87,7 +87,7 @@ jobs:
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 docker login --username ${username} --password ${password}
                 docker tag mukiibi/react-app "${username}/react-app:reactapp"
-                docker push "${username}/react-app:reactapp"
+                docker push "${username}:reactapp"
               fi
 
 
