@@ -80,10 +80,7 @@ jobs:
             key: v1-{{ .Branch }}-{{ epoch }}
             paths:
               - /caches/react-app.tar
-        - run:
-            name: Run tests
-            command: |
-              docker-compose -f ./docker-compose.test.yml up
+
         - run:
             name: Push application Docker image to docker hub
             command: |
