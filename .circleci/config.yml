@@ -100,7 +100,8 @@ workflows:
   build_and_test:
     jobs:
       - build-test
-      - build-docker-image
-  
+      - build-docker-image:
+          requires:
+            - build-test
 
 
