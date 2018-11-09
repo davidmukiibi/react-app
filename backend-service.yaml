@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-backend-service
+spec:
+  selector:
+    app: api-deployment
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: http
+

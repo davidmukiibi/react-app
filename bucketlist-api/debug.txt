@@ -1,0 +1,237 @@
+Sending build context to Docker daemon  331.8kB
+Step 1/12 : FROM python:3
+ ---> 825141134528
+Step 2/12 : RUN apt-get update
+ ---> Running in b264ae5c9de0
+Ign:1 http://deb.debian.org/debian stretch InRelease
+Get:2 http://security.debian.org/debian-security stretch/updates InRelease [94.3 kB]
+Get:3 http://deb.debian.org/debian stretch-updates InRelease [91.0 kB]
+Get:4 http://security.debian.org/debian-security stretch/updates/main amd64 Packages [384 kB]
+Get:5 http://deb.debian.org/debian stretch Release [118 kB]
+Get:6 http://deb.debian.org/debian stretch-updates/main amd64 Packages [5148 B]
+Get:7 http://deb.debian.org/debian stretch Release.gpg [2434 B]
+Get:8 http://deb.debian.org/debian stretch/main amd64 Packages [7099 kB]
+Fetched 7794 kB in 11s (704 kB/s)
+Reading package lists...
+Removing intermediate container b264ae5c9de0
+ ---> 4797b6f3007a
+Step 3/12 : RUN pip install --upgrade pip
+ ---> Running in 16afcbbe2b20
+Requirement already up-to-date: pip in /usr/local/lib/python3.7/site-packages (18.0)
+Removing intermediate container 16afcbbe2b20
+ ---> 38f6423a0a0a
+Step 4/12 : RUN mkdir /app
+ ---> Running in f0978d9546cd
+Removing intermediate container f0978d9546cd
+ ---> c6a93b7c1f9c
+Step 5/12 : COPY requirements.txt /app
+ ---> 514a8ce7ffd6
+Step 6/12 : WORKDIR /app
+ ---> Running in 732cee5fb7f3
+Removing intermediate container 732cee5fb7f3
+ ---> ec267376e2c0
+Step 7/12 : RUN pip install -r requirements.txt
+ ---> Running in 9130d28d6003
+Collecting alembic==0.9.3 (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/90/4a/a783832723ea876232e4f9aa0034ad3c80d3fa22c5b5f320a6fe20e4ac8c/alembic-0.9.3.tar.gz (991kB)
+Collecting astroid==1.5.3 (from -r requirements.txt (line 2))
+  Downloading https://files.pythonhosted.org/packages/9a/a7/d8155abf1c58457f1c65a20208ff128ec403d810dd55c40a39047f1bbddd/astroid-1.5.3-py2.py3-none-any.whl (269kB)
+Collecting certifi==2017.7.27.1 (from -r requirements.txt (line 3))
+  Downloading https://files.pythonhosted.org/packages/40/66/06130724e8205fc8c105db7edb92871c7fff7d31324d7f4405c762624a43/certifi-2017.7.27.1-py2.py3-none-any.whl (349kB)
+Collecting cffi==1.10.0 (from -r requirements.txt (line 4))
+  Downloading https://files.pythonhosted.org/packages/5b/b9/790f8eafcdab455bcd3bd908161f802c9ce5adbf702a83aa7712fcc345b7/cffi-1.10.0.tar.gz (418kB)
+Collecting chardet==3.0.4 (from -r requirements.txt (line 5))
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+Collecting click==6.7 (from -r requirements.txt (line 6))
+  Downloading https://files.pythonhosted.org/packages/34/c1/8806f99713ddb993c5366c362b2f908f18269f8d792aff1abfd700775a77/click-6.7-py2.py3-none-any.whl (71kB)
+Collecting colorama==0.3.9 (from -r requirements.txt (line 7))
+  Downloading https://files.pythonhosted.org/packages/db/c8/7dcf9dbcb22429512708fe3a547f8b6101c0d02137acbd892505aee57adf/colorama-0.3.9-py2.py3-none-any.whl
+Collecting coverage==4.4.1 (from -r requirements.txt (line 8))
+  Downloading https://files.pythonhosted.org/packages/36/db/690ee79312bb60f121c0da1c973856ddb751afe09cc10caec1452208eaf4/coverage-4.4.1.tar.gz (369kB)
+Collecting coveralls==1.1 (from -r requirements.txt (line 9))
+  Downloading https://files.pythonhosted.org/packages/81/f9/da2ad9334f60e418cb229c58724330be2635b369676d3eec8f61e1f85faa/coveralls-1.1-py2.py3-none-any.whl
+Collecting cryptography (from -r requirements.txt (line 10))
+  Downloading https://files.pythonhosted.org/packages/c2/fa/fa9a8933c285895935d1392922fe721e9cb1b2c1881d14f149213a227ee3/cryptography-2.3-cp34-abi3-manylinux1_x86_64.whl (2.1MB)
+Collecting docopt==0.6.2 (from -r requirements.txt (line 11))
+  Downloading https://files.pythonhosted.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz
+Collecting flasgger==0.6.6 (from -r requirements.txt (line 12))
+  Downloading https://files.pythonhosted.org/packages/26/c1/33c439d9dd9d8441a2ca57d56494d5935f5ca8d8501c23600a5a7930fd6a/flasgger-0.6.6-py2.py3-none-any.whl (1.8MB)
+Collecting Flask==0.12.2 (from -r requirements.txt (line 13))
+  Downloading https://files.pythonhosted.org/packages/77/32/e3597cb19ffffe724ad4bf0beca4153419918e7fa4ba6a34b04ee4da3371/Flask-0.12.2-py2.py3-none-any.whl (83kB)
+Collecting Flask-Migrate==2.1.0 (from -r requirements.txt (line 14))
+  Downloading https://files.pythonhosted.org/packages/70/a4/ecd5d60e63f1f13ad6fbe3d65ff164e036f457efd6e6dccbcfccdabce11f/Flask-Migrate-2.1.0.tar.gz
+Collecting Flask-Script==2.0.5 (from -r requirements.txt (line 15))
+  Downloading https://files.pythonhosted.org/packages/66/e9/2b3c7c548a6bad0b59da21e2050613da43aae4da617fb98847efa3e09a43/Flask-Script-2.0.5.tar.gz (42kB)
+Collecting Flask-SQLAlchemy==2.2 (from -r requirements.txt (line 16))
+  Downloading https://files.pythonhosted.org/packages/14/80/f436d76f05860f6b272dac849c9b7ca9beab0b39aa6ed787de4dc17ebb1f/Flask_SQLAlchemy-2.2-py2.py3-none-any.whl
+Collecting gunicorn==19.7.1 (from -r requirements.txt (line 17))
+  Downloading https://files.pythonhosted.org/packages/64/32/becbd4089a4c06f0f9f538a76e9fe0b19a08f010bcb47dcdbfbc640cdf7d/gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
+Collecting idna==2.5 (from -r requirements.txt (line 18))
+  Downloading https://files.pythonhosted.org/packages/11/7d/9bbbd7bb35f34b0169542487d2a8859e44306bb2e6a4455d491800a5621f/idna-2.5-py2.py3-none-any.whl (55kB)
+Collecting isort==4.2.15 (from -r requirements.txt (line 19))
+  Downloading https://files.pythonhosted.org/packages/a9/83/ca1c7737c9a43a3e5bd2b9954add88700267801415310395d4191e5ff8e3/isort-4.2.15-py2.py3-none-any.whl (43kB)
+Collecting itsdangerous==0.24 (from -r requirements.txt (line 20))
+  Downloading https://files.pythonhosted.org/packages/dc/b4/a60bcdba945c00f6d608d8975131ab3f25b22f2bcfe1dab221165194b2d4/itsdangerous-0.24.tar.gz (46kB)
+Collecting Jinja2==2.9.6 (from -r requirements.txt (line 21))
+  Downloading https://files.pythonhosted.org/packages/5e/73/10c45b82a88ed6b7751bd40da31eeefd7b362e07b56a99aa6e56655a0794/Jinja2-2.9.6-py2.py3-none-any.whl (340kB)
+Collecting jsonschema==2.6.0 (from -r requirements.txt (line 22))
+  Downloading https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
+Collecting lazy-object-proxy==1.3.1 (from -r requirements.txt (line 23))
+  Downloading https://files.pythonhosted.org/packages/55/08/23c0753599bdec1aec273e322f277c4e875150325f565017f6280549f554/lazy-object-proxy-1.3.1.tar.gz
+Collecting Mako==1.0.7 (from -r requirements.txt (line 24))
+  Downloading https://files.pythonhosted.org/packages/eb/f3/67579bb486517c0d49547f9697e36582cd19dafb5df9e687ed8e22de57fa/Mako-1.0.7.tar.gz (564kB)
+Collecting MarkupSafe==1.0 (from -r requirements.txt (line 25))
+  Downloading https://files.pythonhosted.org/packages/4d/de/32d741db316d8fdb7680822dd37001ef7a448255de9699ab4bfcbdf4172b/MarkupSafe-1.0.tar.gz
+Collecting mccabe==0.6.1 (from -r requirements.txt (line 26))
+  Downloading https://files.pythonhosted.org/packages/87/89/479dc97e18549e21354893e4ee4ef36db1d237534982482c3681ee6e7b57/mccabe-0.6.1-py2.py3-none-any.whl
+Collecting mistune==0.7.4 (from -r requirements.txt (line 27))
+  Downloading https://files.pythonhosted.org/packages/7b/ab/e71dd1ca31addcd0268c54859eaf75414a10fbc48c79078f7c3066e6ed0d/mistune-0.7.4-py2.py3-none-any.whl
+Collecting nose==1.3.7 (from -r requirements.txt (line 28))
+  Downloading https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl (154kB)
+Collecting passlib==1.7.1 (from -r requirements.txt (line 29))
+  Downloading https://files.pythonhosted.org/packages/ee/a7/d6d238d927df355d4e4e000670342ca4705a72f0bf694027cf67d9bcf5af/passlib-1.7.1-py2.py3-none-any.whl (498kB)
+Collecting pbr==3.1.1 (from -r requirements.txt (line 30))
+  Downloading https://files.pythonhosted.org/packages/0c/5d/b077dbf309993d52c1d71e6bf6fe443a8029ea215135ebbe0b1b10e7aefc/pbr-3.1.1-py2.py3-none-any.whl (99kB)
+Collecting psycopg2==2.7.1 (from -r requirements.txt (line 31))
+  Downloading https://files.pythonhosted.org/packages/f8/e9/5793369ce8a41bf5467623ded8d59a434dfef9c136351aca4e70c2657ba0/psycopg2-2.7.1.tar.gz (421kB)
+Collecting pyasn1==0.3.1 (from -r requirements.txt (line 32))
+  Downloading https://files.pythonhosted.org/packages/4a/7b/59c521d82786e6573ee1f69965fc18f887f16af4d8f418ef0b2e55eede8d/pyasn1-0.3.1-py2.py3-none-any.whl (61kB)
+Collecting pycparser==2.18 (from -r requirements.txt (line 33))
+  Downloading https://files.pythonhosted.org/packages/8c/2d/aad7f16146f4197a11f8e91fb81df177adcc2073d36a17b1491fd09df6ed/pycparser-2.18.tar.gz (245kB)
+Collecting PyJWT==1.5.2 (from -r requirements.txt (line 34))
+  Downloading https://files.pythonhosted.org/packages/46/63/9e57342802642c447f0620dea41a18033abbb466af9417543295ab56b8b9/PyJWT-1.5.2-py2.py3-none-any.whl
+Collecting pylint==1.7.2 (from -r requirements.txt (line 35))
+  Downloading https://files.pythonhosted.org/packages/4f/9c/a73e0da981a39768cfaff54c0d46588a9284bd25146e24d479aa82c7c7ad/pylint-1.7.2-py2.py3-none-any.whl (644kB)
+Collecting python-dateutil==2.6.1 (from -r requirements.txt (line 36))
+  Downloading https://files.pythonhosted.org/packages/4b/0d/7ed381ab4fe80b8ebf34411d14f253e1cf3e56e2820ffa1d8844b23859a2/python_dateutil-2.6.1-py2.py3-none-any.whl (194kB)
+Collecting python-editor==1.0.3 (from -r requirements.txt (line 37))
+  Downloading https://files.pythonhosted.org/packages/65/1e/adf6e000ea5dc909aa420352d6ba37f16434c8a3c2fa030445411a1ed545/python-editor-1.0.3.tar.gz
+Collecting PyYAML (from -r requirements.txt (line 38))
+  Downloading https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769/PyYAML-3.13.tar.gz (270kB)
+Collecting requests==2.18.2 (from -r requirements.txt (line 39))
+  Downloading https://files.pythonhosted.org/packages/cf/fa/31b222e4b44975de1b5ac3e1a725abdfeb00e0d761567ab426ee28a7fc73/requests-2.18.2-py2.py3-none-any.whl (88kB)
+Collecting six==1.10.0 (from -r requirements.txt (line 40))
+  Downloading https://files.pythonhosted.org/packages/c8/0a/b6723e1bc4c516cb687841499455a8505b44607ab535be01091c0f24f079/six-1.10.0-py2.py3-none-any.whl
+Collecting SQLAlchemy==1.1.11 (from -r requirements.txt (line 41))
+  Downloading https://files.pythonhosted.org/packages/59/f1/28f2205c3175e6bf32300c0f30f9d91dbc9eb910debbff3ffecb88d18528/SQLAlchemy-1.1.11.tar.gz (5.2MB)
+Collecting stevedore==1.23.0 (from -r requirements.txt (line 42))
+  Downloading https://files.pythonhosted.org/packages/09/74/085a88c0b5718a1f0910732e93662a8f25a38799fd21a5e3a46a7a3add24/stevedore-1.23.0-py2.py3-none-any.whl
+Collecting urllib3==1.22 (from -r requirements.txt (line 43))
+  Downloading https://files.pythonhosted.org/packages/63/cb/6965947c13a94236f6d4b8223e21beb4d576dc72e8130bd7880f600839b8/urllib3-1.22-py2.py3-none-any.whl (132kB)
+Collecting virtualenv==15.1.0 (from -r requirements.txt (line 44))
+  Downloading https://files.pythonhosted.org/packages/6f/86/3dc328ee7b1a6419ebfac7896d882fba83c48e3561d22ddddf38294d3e83/virtualenv-15.1.0-py2.py3-none-any.whl (1.8MB)
+Collecting virtualenv-clone==0.2.6 (from -r requirements.txt (line 45))
+  Downloading https://files.pythonhosted.org/packages/36/66/d95f83255138ded1aec242de5ee51536226fa7b2582a7ce0863fea5dc4f2/virtualenv-clone-0.2.6.tar.gz
+Collecting virtualenvwrapper==4.7.2 (from -r requirements.txt (line 46))
+  Downloading https://files.pythonhosted.org/packages/3e/85/17113f6d1d15739f811f6836ee4c8cb120fa3bc46d248853753f519ae7b0/virtualenvwrapper-4.7.2.tar.gz (90kB)
+Collecting virtualenvwrapper-win==1.2.1 (from -r requirements.txt (line 47))
+  Downloading https://files.pythonhosted.org/packages/af/f1/d2fbc0c65353e3aaa02dd414102158f097abe77c34df48e864ee7afef822/virtualenvwrapper-win-1.2.1.zip
+Collecting Werkzeug==0.12.2 (from -r requirements.txt (line 48))
+  Downloading https://files.pythonhosted.org/packages/97/02/306e0d57fdbf467ec1c763bc1757ec6ba20b1332e0ea7e49111533d71d1c/Werkzeug-0.12.2-py2.py3-none-any.whl (312kB)
+Collecting wrapt==1.10.10 (from -r requirements.txt (line 49))
+  Downloading https://files.pythonhosted.org/packages/a3/bb/525e9de0a220060394f4aa34fdf6200853581803d92714ae41fc3556e7d7/wrapt-1.10.10.tar.gz
+Collecting asn1crypto>=0.21.0 (from cryptography->-r requirements.txt (line 10))
+  Downloading https://files.pythonhosted.org/packages/ea/cd/35485615f45f30a510576f1a56d1e0a7ad7bd8ab5ed7cdc600ef7cd06222/asn1crypto-0.24.0-py2.py3-none-any.whl (101kB)
+Building wheels for collected packages: alembic, cffi, coverage, docopt, Flask-Migrate, Flask-Script, itsdangerous, lazy-object-proxy, Mako, MarkupSafe, psycopg2, pycparser, python-editor, PyYAML, SQLAlchemy, virtualenv-clone, virtualenvwrapper, virtualenvwrapper-win, wrapt
+  Running setup.py bdist_wheel for alembic: started
+  Running setup.py bdist_wheel for alembic: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/60/2d/38/7869c0bd63d1298d87a6ff7af7ea84b9aba092db24732b3ff6
+  Running setup.py bdist_wheel for cffi: started
+  Running setup.py bdist_wheel for cffi: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/f7/15/ae/fb38663a1329fd6043160c18a6c5e3a60aec7f7a727a631875
+  Running setup.py bdist_wheel for coverage: started
+  Running setup.py bdist_wheel for coverage: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/14/ac/8c/1f9b70078ccfb05df0a056de4c8ce643a569763f08739071bd
+  Running setup.py bdist_wheel for docopt: started
+  Running setup.py bdist_wheel for docopt: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/9b/04/dd/7daf4150b6d9b12949298737de9431a324d4b797ffd63f526e
+  Running setup.py bdist_wheel for Flask-Migrate: started
+  Running setup.py bdist_wheel for Flask-Migrate: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/da/4e/84/2147f534a93ab4744243cb46d2241e2a2cd3a9e0bd3ba9ce2e
+  Running setup.py bdist_wheel for Flask-Script: started
+  Running setup.py bdist_wheel for Flask-Script: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/f9/ed/7b/530510061d729b8d8f806b0df2cd81d8a4d6889f537919dcfe
+  Running setup.py bdist_wheel for itsdangerous: started
+  Running setup.py bdist_wheel for itsdangerous: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/2c/4a/61/5599631c1554768c6290b08c02c72d7317910374ca602ff1e5
+  Running setup.py bdist_wheel for lazy-object-proxy: started
+  Running setup.py bdist_wheel for lazy-object-proxy: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/a0/63/e2/6d93295282cb35b53b14b50b602c76dfb04471e21b31d8ad7b
+  Running setup.py bdist_wheel for Mako: started
+  Running setup.py bdist_wheel for Mako: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/15/35/25/dbcb848832ccb1a4b4ad23f529badfd3bce9bf88017f7ca510
+  Running setup.py bdist_wheel for MarkupSafe: started
+  Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/33/56/20/ebe49a5c612fffe1c5a632146b16596f9e64676768661e4e46
+  Running setup.py bdist_wheel for psycopg2: started
+  Running setup.py bdist_wheel for psycopg2: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/cf/1b/4f/e9504497d0d47c85962709db4052b6052237dd3edf20512eee
+  Running setup.py bdist_wheel for pycparser: started
+  Running setup.py bdist_wheel for pycparser: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/c0/a1/27/5ba234bd77ea5a290cbf6d675259ec52293193467a12ef1f46
+  Running setup.py bdist_wheel for python-editor: started
+  Running setup.py bdist_wheel for python-editor: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/36/e0/98/ba386b125a00ea9dd52e2c16aa2ec0adbbd639b84bfe2e001d
+  Running setup.py bdist_wheel for PyYAML: started
+  Running setup.py bdist_wheel for PyYAML: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/ad/da/0c/74eb680767247273e2cf2723482cb9c924fe70af57c334513f
+  Running setup.py bdist_wheel for SQLAlchemy: started
+  Running setup.py bdist_wheel for SQLAlchemy: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/c2/05/49/544f56621e6766ebeba43c42f7ea4405bcd37cff04c3e571a6
+  Running setup.py bdist_wheel for virtualenv-clone: started
+  Running setup.py bdist_wheel for virtualenv-clone: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/ba/90/2b/6bebd5822208fa134cfcb72684c6aa6cdd4ad32054dcac5d98
+  Running setup.py bdist_wheel for virtualenvwrapper: started
+  Running setup.py bdist_wheel for virtualenvwrapper: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/64/b5/18/ceabde445efd450f8d449d8543772f7266a9f4694b65fd2f25
+  Running setup.py bdist_wheel for virtualenvwrapper-win: started
+  Running setup.py bdist_wheel for virtualenvwrapper-win: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/83/07/2f/1cdd0ea75e5d930c8b5a57b3610d0acd4b5a3c5eae72a5b750
+  Running setup.py bdist_wheel for wrapt: started
+  Running setup.py bdist_wheel for wrapt: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/49/4d/4d/5b33a813cd9b5f4cc10ac64923538e08645eeab07671133a05
+Successfully built alembic cffi coverage docopt Flask-Migrate Flask-Script itsdangerous lazy-object-proxy Mako MarkupSafe psycopg2 pycparser python-editor PyYAML SQLAlchemy virtualenv-clone virtualenvwrapper virtualenvwrapper-win wrapt
+Installing collected packages: SQLAlchemy, MarkupSafe, Mako, python-editor, six, python-dateutil, alembic, wrapt, lazy-object-proxy, astroid, certifi, pycparser, cffi, chardet, click, colorama, coverage, docopt, idna, urllib3, requests, coveralls, asn1crypto, cryptography, jsonschema, PyYAML, Werkzeug, itsdangerous, Jinja2, Flask, mistune, flasgger, Flask-SQLAlchemy, Flask-Migrate, Flask-Script, gunicorn, isort, mccabe, nose, passlib, pbr, psycopg2, pyasn1, PyJWT, pylint, stevedore, virtualenv, virtualenv-clone, virtualenvwrapper, virtualenvwrapper-win
+Successfully installed Flask-0.12.2 Flask-Migrate-2.1.0 Flask-SQLAlchemy-2.2 Flask-Script-2.0.5 Jinja2-2.9.6 Mako-1.0.7 MarkupSafe-1.0 PyJWT-1.5.2 PyYAML-3.13 SQLAlchemy-1.1.11 Werkzeug-0.12.2 alembic-0.9.3 asn1crypto-0.24.0 astroid-1.5.3 certifi-2017.7.27.1 cffi-1.10.0 chardet-3.0.4 click-6.7 colorama-0.3.9 coverage-4.4.1 coveralls-1.1 cryptography-2.3 docopt-0.6.2 flasgger-0.6.6 gunicorn-19.7.1 idna-2.5 isort-4.2.15 itsdangerous-0.24 jsonschema-2.6.0 lazy-object-proxy-1.3.1 mccabe-0.6.1 mistune-0.7.4 nose-1.3.7 passlib-1.7.1 pbr-3.1.1 psycopg2-2.7.1 pyasn1-0.3.1 pycparser-2.18 pylint-1.7.2 python-dateutil-2.6.1 python-editor-1.0.3 requests-2.18.2 six-1.10.0 stevedore-1.23.0 urllib3-1.22 virtualenv-15.1.0 virtualenv-clone-0.2.6 virtualenvwrapper-4.7.2 virtualenvwrapper-win-1.2.1 wrapt-1.10.10
+Removing intermediate container 9130d28d6003
+ ---> 718101fd13d8
+Step 8/12 : COPY . /app
+ ---> a6e650f54416
+Step 9/12 : RUN chmod +x start-app.sh
+ ---> Running in 40051175a298
+Removing intermediate container 40051175a298
+ ---> dfb80c942268
+Step 10/12 : RUN apt-get update -yqq   && apt-get install -yqq --no-install-recommends apt-utils    netcat   && apt-get -q clean
+ ---> Running in af781c199baa
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mSelecting previously unselected package libapt-inst2.0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 30244 files and directories currently installed.)
+Preparing to unpack .../libapt-inst2.0_1.4.8_amd64.deb ...
+Unpacking libapt-inst2.0:amd64 (1.4.8) ...
+Selecting previously unselected package apt-utils.
+Preparing to unpack .../apt-utils_1.4.8_amd64.deb ...
+Unpacking apt-utils (1.4.8) ...
+Selecting previously unselected package netcat-traditional.
+Preparing to unpack .../netcat-traditional_1.10-41+b1_amd64.deb ...
+Unpacking netcat-traditional (1.10-41+b1) ...
+Selecting previously unselected package netcat.
+Preparing to unpack .../netcat_1.10-41_all.deb ...
+Unpacking netcat (1.10-41) ...
+Setting up libapt-inst2.0:amd64 (1.4.8) ...
+Setting up apt-utils (1.4.8) ...
+Setting up netcat-traditional (1.10-41+b1) ...
+update-alternatives: using /bin/nc.traditional to provide /bin/nc (nc) in auto mode
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Setting up netcat (1.10-41) ...
+Removing intermediate container af781c199baa
+ ---> a26581193bdc
+Step 11/12 : EXPOSE 5000
+ ---> Running in 9b2083369583
+Removing intermediate container 9b2083369583
+ ---> 9e6fb418187a
+Step 12/12 : CMD ["./start-app.sh"]
+ ---> Running in 00b244f6e707
+Removing intermediate container 00b244f6e707
+ ---> 1798104fe238
+Successfully built 1798104fe238
+Successfully tagged mukiibi/bacin-api:latest

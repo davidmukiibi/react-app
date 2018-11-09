@@ -11,7 +11,7 @@ To run this project, you will need Python 3 installed on your computer.
 - Install `virtualenv` and `virtualenvwrapper`.
 - Clone the repository using `git clone https://github.com/john555/bucketlist-api.git`.
 - Cd into the root the project root folder using `cd <folder_name>`.
-- Create a virtual environment using using `mkvirtual <virtual_environment_name>`.
+- Create a virtual environment using `mkvirtual <virtual_environment_name>`.
 - Activate the virtual environment using `workon <virtual_environment_name>` if it isn't activated.
 - Install required packages using `pip install -r requirements.txt`.
 - Create a database using postgresql and set `DATABASE_URL` as an environment variable. This is the database connection string.

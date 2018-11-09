@@ -1,27 +1,14 @@
 FROM node:alpine
 
-RUN npm install -g gulp-cli
-
-RUN npm install -g serve
+RUN npm install -g gulp-cli serve
 
 COPY . /
 
-RUN npm install
+RUN npm install 
 
 RUN gulp sass
 
-ENTRYPOINT [ "npm" ]
-
-CMD ["start"]
-
-
-
-
-
-
-
-
-
+CMD ["npm", "start"]
 
 
 

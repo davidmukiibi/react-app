@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+  frontend:
+    container_name: react-frontend-container
+    image: mukiibi/frontend:v47
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    links:
+      - backend
+
+
+  backend:
+    container_name: backend
+    image: mukiibi/backend:v38
+    ports:
+      - 5000:5000
+    environment:
+      - DATABASE_URL=postgresql://postgres@database/reactdb
+      - TEST_DATABASE_URL=postgresql://postgres@database/reactdb
+      - APP_SECRET=iigMnxLgWdFJppmd3JgZRzOUYLgmjaXX
+      - REQUESTS_ORIGIN=*
+    depends_on:
+      - database
+    links:
+      - database
+    
+
+  database:
+    container_name: database
+    image: mukiibi/database:v1
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      # - POSTGRES_PASSWORD=postgres
+
