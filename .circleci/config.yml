@@ -120,6 +120,8 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - my-repo
+      - forked-repo
       - build-test:
           requires:
             - my-repo
