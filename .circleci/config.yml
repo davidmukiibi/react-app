@@ -1,20 +1,44 @@
 version: 2
 jobs:
+  my-repo:
+    docker:
+      - image: circleci/python:2.7.13
+    working_directory: ~/repo
+    steps:
+      - run:
+          name: Repo Check 1
+          command: |
+            if [ "$CIRCLE_REPOSITORY_URL" == "https://github.com/davidmukiibi/react-app.git" ]; then
+              exit 0
+            # else
+              # exit 1
+            fi
+
+  forked-repo:
+    docker:
+      - image: circleci/python:2.7.13
+    working_directory: ~/repo
+    steps:
+      - run:
+          name: Repo Check 2
+          command: |
+            if [ "$CIRCLE_REPOSITORY_URL" != "https://github.com/davidmukiibi/react-app.git" ]; then
+              exit 0
+            # else
+              # exit 1
+            fi
+
   build-test:
     docker:
       - image: circleci/node:7.10
-
     working_directory: ~/react-app
-
     steps:
       - checkout
-
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-          
+          - v1-dependencies-   
       - run:
           name: install gulp cli
           command: |
@@ -96,9 +120,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build-test
+      - build-test:
+          requires:
+            - my-repo
       - build-docker-image:
           requires:
-            - build-test
+            - forked-repo
 
 
