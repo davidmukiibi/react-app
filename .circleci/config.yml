@@ -121,12 +121,12 @@ workflows:
   build_and_test:
     jobs:
       - my-repo
-      - forked-repo
+      # - forked-repo
       - build-test:
           requires:
             - my-repo
-      - build-docker-image:
-          requires:
-            - forked-repo
+      # - build-docker-image:
+      #     requires:
+      #       - forked-repo
 
 
