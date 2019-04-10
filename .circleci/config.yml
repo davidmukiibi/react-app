@@ -38,7 +38,7 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-   
+          - v1-dependencies-
       - run:
           name: install gulp cli
           command: |
@@ -48,16 +48,16 @@ jobs:
           name: install dependencies
           command: |
             npm install
-            
+
       - run:
           name: compile sass
           command: |
             gulp sass
-  
+
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}  
+          key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
       - run:
@@ -120,13 +120,12 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      # - my-repo
-      - forked-repo
-      # - build-test:
-          # requires:
-            # - my-repo
-      - build-docker-image:
-          requires:
-            - forked-repo
+      - build-test:
+          filters:
+            branches:
+            only: /^(?!pull\/).*$/
+      # - build-docker-image:
+      #     requires:
+      #       - forked-repo
 
 
