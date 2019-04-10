@@ -139,15 +139,15 @@ jobs:
   my-repo:
     docker:
       - image: circleci/node:7.10
-    working_directory: ~/react-app/.circleci
+    working_directory: ~/react-app/bucketlist-react
     steps:
       - run:
           name: Repo Check 1
           command: |
             if [ "$CIRCLE_REPOSITORY_URL" == "git@github.com:davidmukiibi/react-app.git" ]; then
               pwd
-              sudo chmod +x setup.sh
-              ./setup.sh
+              # sudo chmod +x ../.circleci/setup.sh
+              # ./../.circleci/setup.sh
             else
               echo "this is a forked repo hence failing."
               exit 1
