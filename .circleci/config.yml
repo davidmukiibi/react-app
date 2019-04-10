@@ -139,7 +139,7 @@ jobs:
   my-repo:
     docker:
       - image: circleci/node:7.10
-    working_directory: ~/react-app
+    working_directory: ~/react-app/bucketlist-react
     steps:
       - run:
           name: Repo Check 1
