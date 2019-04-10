@@ -8,6 +8,7 @@ jobs:
       - run:
           name: Repo Check 1
           command: |
+            echo $CIRCLE_REPOSITORY_URL
             if [ "$CIRCLE_REPOSITORY_URL" == "https://github.com/davidmukiibi/react-app.git" ]; then
               exit 0
             else
