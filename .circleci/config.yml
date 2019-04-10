@@ -141,6 +141,7 @@ jobs:
       - image: circleci/node:7.10
     working_directory: ~/react-app/bucketlist-react
     steps:
+      - checkout
       - run:
           name: Repo Check 1
           command: |
