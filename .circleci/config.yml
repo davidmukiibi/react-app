@@ -1,3 +1,139 @@
+# version: 2
+# jobs:
+#   my-repo:
+#     docker:
+#       - image: circleci/python:2.7.13
+#     working_directory: ~/repo
+#     steps:
+#       - run:
+#           name: Repo Check 1
+#           command: |
+#             if [ "$CIRCLE_REPOSITORY_URL" == "git@github.com:davidmukiibi/react-app.git" ]; then
+#               exit 0
+#             else
+#               echo "this is a forked repo hence failing."
+#               exit 1
+#             fi
+
+#   forked-repo:
+#     docker:
+#       - image: circleci/python:2.7.13
+#     working_directory: ~/repo
+#     steps:
+#       - run:
+#           name: Repo Check 2
+#           command: |
+#             if [ "$CIRCLE_REPOSITORY_URL" != "git@github.com:davidmukiibi/react-app.git" ]; then
+#               exit 0
+#             else
+#               echo "This is not a forked repo, hence the fail."
+#               exit 1
+#             fi
+
+#   build-test:
+#     docker:
+#       - image: circleci/node:7.10
+#     working_directory: ~/react-app
+#     steps:
+#       - checkout
+#       - restore_cache:
+#           keys:
+#           - v1-dependencies-{{ checksum "package.json" }}
+#           # fallback to using the latest cache if no exact match is found
+#           - v1-dependencies-
+#       - run:
+#           name: install gulp cli
+#           command: |
+#             sudo npm install --global gulp-cli
+
+#       - run:
+#           name: install dependencies
+#           command: |
+#             npm install
+
+#       - run:
+#           name: compile sass
+#           command: |
+#             gulp sass
+
+#       - save_cache:
+#           paths:
+#             - node_modules
+#           key: v1-dependencies-{{ checksum "package.json" }}
+
+#       # run tests!
+#       - run:
+#           name: run tests
+#           command: |
+#             npm test
+
+#   build-docker-image:
+#       working_directory: /react-app
+
+#       docker:
+#         - image: docker:17.05.0-ce-git
+#       steps:
+#         - checkout
+#         - setup_remote_docker
+#         - run:
+#             name: Install dependencies
+#             command: |
+#               apk add --no-cache \
+#                 py-pip=9.0.0-r1
+#               pip install \
+#                 docker-compose==1.12.0 \
+#                 awscli==1.11.76
+#         - restore_cache:
+#             keys:
+#               - v1-{{ .Branch }}
+#             paths:
+#               - /caches/react-app.tar
+#         - run:
+#             name: Load Docker image layer cache
+#             command: |
+#               set +o pipefail
+#               docker load -i /caches/react-app.tar | true
+#         - run:
+#             name: Build application Docker image
+#             command: |
+#               docker build --cache-from=react-app -t mukiibi/react-app .
+#         - run:
+#             name: Save Docker image layer cache
+#             command: |
+#               mkdir -p /caches
+#               docker save -o /caches/react-app.tar mukiibi/react-app
+#         - save_cache:
+#             key: v1-{{ .Branch }}-{{ epoch }}
+#             paths:
+#               - /caches/react-app.tar
+
+#         - run:
+#             name: Push application Docker image to docker hub
+#             command: |
+#               if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#                 docker login --username ${username} --password ${password}
+#                 docker tag mukiibi/react-app "${username}/react-app:reactapp"
+#                 docker push "${username}/react-app:reactapp"
+#               fi
+
+
+
+# workflows:
+#   version: 2
+#   build_and_test:
+#     jobs:
+#       # - my-repo
+#       - forked-repo
+#       - build-test:
+#           requires:
+#             # - my-repo
+#             - forked-repo
+#       # - build-docker-image:
+#           # requires:
+#             # - forked-repo
+
+
+
 version: 2
 jobs:
   my-repo:
@@ -9,110 +145,31 @@ jobs:
           name: Repo Check 1
           command: |
             if [ "$CIRCLE_REPOSITORY_URL" == "git@github.com:davidmukiibi/react-app.git" ]; then
-              exit 0
+              sudo npm install --global gulp-cli
+              npm install
+              gulp sass
+              npm test
             else
+              echo "this is a forked repo hence failing."
               exit 1
             fi
 
   forked-repo:
     docker:
-      - image: circleci/python:2.7.13
-    working_directory: ~/repo
+      - image: circleci/node:7.10
+    working_directory: ~/react-app
     steps:
+      - checkout
       - run:
           name: Repo Check 2
           command: |
             if [ "$CIRCLE_REPOSITORY_URL" != "git@github.com:davidmukiibi/react-app.git" ]; then
               exit 0
             else
+              echo "This is not a forked repo, hence the fail."
               exit 1
             fi
 
-  build-test:
-    docker:
-      - image: circleci/node:7.10
-    working_directory: ~/react-app
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run:
-          name: install gulp cli
-          command: |
-            sudo npm install --global gulp-cli
-
-      - run:
-          name: install dependencies
-          command: |
-            npm install
-
-      - run:
-          name: compile sass
-          command: |
-            gulp sass
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run:
-          name: run tests
-          command: |
-            npm test
-
-  build-docker-image:
-      working_directory: /react-app
-
-      docker:
-        - image: docker:17.05.0-ce-git
-      steps:
-        - checkout
-        - setup_remote_docker
-        - run:
-            name: Install dependencies
-            command: |
-              apk add --no-cache \
-                py-pip=9.0.0-r1
-              pip install \
-                docker-compose==1.12.0 \
-                awscli==1.11.76
-        - restore_cache:
-            keys:
-              - v1-{{ .Branch }}
-            paths:
-              - /caches/react-app.tar
-        - run:
-            name: Load Docker image layer cache
-            command: |
-              set +o pipefail
-              docker load -i /caches/react-app.tar | true
-        - run:
-            name: Build application Docker image
-            command: |
-              docker build --cache-from=react-app -t mukiibi/react-app .
-        - run:
-            name: Save Docker image layer cache
-            command: |
-              mkdir -p /caches
-              docker save -o /caches/react-app.tar mukiibi/react-app
-        - save_cache:
-            key: v1-{{ .Branch }}-{{ epoch }}
-            paths:
-              - /caches/react-app.tar
-
-        - run:
-            name: Push application Docker image to docker hub
-            command: |
-              if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                docker login --username ${username} --password ${password}
-                docker tag mukiibi/react-app "${username}/react-app:reactapp"
-                docker push "${username}/react-app:reactapp"
-              fi
 
 
 
@@ -120,14 +177,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      # - my-repo
-      - forked-repo
-      - build-test:
-          requires:
-            # - my-repo
-            - forked-repo
-      # - build-docker-image:
+      - my-repo
+      # - forked-repo
+      # - build-test:
           # requires:
+            # - my-repo
             # - forked-repo
 
 
