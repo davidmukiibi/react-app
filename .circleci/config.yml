@@ -10,8 +10,8 @@ jobs:
           command: |
             if [ "$CIRCLE_REPOSITORY_URL" == "https://github.com/davidmukiibi/react-app.git" ]; then
               exit 0
-            # else
-              # exit 1
+            else
+              exit 1
             fi
 
   forked-repo:
