@@ -124,6 +124,7 @@ workflows:
           filters:
             branches:
             only: /^(?!pull\/).*$/
+            
       # - build-docker-image:
       #     requires:
       #       - forked-repo
